@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Submerso</title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+	<!-- External libs -->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="js/minheap.js"></script>
+	<!-- User libs -->
+    <script src="js/puzzle.js"></script>
+	<script src="js/bloco.js"></script>
+	<script src="js/jogo.js"></script>
+    <script src="js/cronometro.js"></script>
+    <script src="js/main.js"></script> <!-- Script principal. Começe a ler por aqui! -->
+    <script src="js/app.js"></script>
+	<script src="js/audio.js"></script>
+  </head>
+  <body ng-app="starter">
+	<!-- Tela inicial -->
+    <div id="inicial">
+		<div>
+			<center>
+				<img />
+				<button id="iniciar-jogo">Play</button>
+				<button id="sobre">Sobre</button>
+			</center>
+		</div>
+	</div>
+    <!-- Tela de perder o jogo -->
+    <div id="tela-derrota">
+		<div>
+			<center>
+				<h2>Você perdeu!</h2>
+				<button class="button button-light reiniciar-jogo">Reiniciar jogo</button>
+			</center>
+		</div>
+    </div>
+    <!-- Tela de vencer o jogo -->
+    <div id="tela-vencer">
+		<div>
+			<center>
+				<h2>Você venceu!</h2>
+				<button class="button button-light reiniciar-jogo">Reiniciar jogo</button>
+			</center>
+		</div>
+    </div>
+    <ion-pane>
+	  <!--
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">Submerso</h1>
+      </ion-header-bar>
+      -->
+      <ion-content style="background-color: rgb(54, 95, 145);">
+      <div ng-controller="MainController" id="controller" >
+	  
+		<!-- Opções do jogo -->
+		<div id="opcoes-jogo">
+			<div>
+				<button class="button button-light mostrar-numero"><i class="fa fa-heart"></i></button>
+				<button class="button button-light mutar" data-mutado="false" on-click="play()"><i class="fa fa-bell"></i></button>
+				<button class="button button-light ajuda"><i class="fa fa-question"></i></button>
+			</div>
+		</div>
+
+		<div class="divisor"></div>
+		
+		<!-- Configurações do jogo -->
+		<input type="hidden" id="dimensao" value="3" />		 	 <!-- Número de blocos -->
+		<input type="hidden" id="velocidade" value="200" />	 	 <!-- Velocidade da animação dos blocos -->
+		<input type="hidden" id="embaralhos" value="18" /> 		 <!-- Número de embaralhos feitos inicialmente -->
+		<input type="hidden" id="tempo-total" value="300" />	 <!-- Tempo total do cronômetro em segundos -->
+		<input type="hidden" id="margem" value="5" /> 			 <!-- Margem entre os blocos em pixels -->
+		<input type="hidden" id="porcentagem" value="0.8" />	 <!-- Porcentagem da tela que os blocos ocuparão -->
+		<input type="hidden" id="duracao-numeros" value="3.0" /> <!-- Duração de mostrar os números em segundos -->
+
+		<div class="divisor"></div>
+
+		<!-- Container dos blocos -->
+		<center><div id="container"></div></center>
+
+		<div class="divisor"></div>
+
+		<div id="cronometro">
+			<div id="tempo-restante"></div>
+		</div>
+      </div>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>

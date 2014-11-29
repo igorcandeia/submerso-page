@@ -1,0 +1,90 @@
+/* Geral */
+.divisor {
+	clear: both; 
+	margin-bottom: 30px;
+}	
+#container {
+	position: relative;
+}
+#container div {
+	position: absolute;
+	text-align: center;
+	cursor: pointer;
+}
+#container img {
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 100%;
+}
+/* Tela inicial */
+#inicial button {
+	display: block;
+	width: 300px;
+	margin: 20px;
+	padding: 10px;
+	background-color: rgb(149, 179, 215);
+	text-color: black;
+	font-weight: bold;
+	border: 0px;
+	border-radius: 5px;
+}
+#inicial img {
+	width: 150px;
+	height: 150px;
+	background-color: rgb(149, 179, 215);
+	border-radius: 100%;
+}
+/* Cronômetro */
+#cronometro {
+	width: 80%;
+	height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: rgb(149, 179, 215);
+}
+#tempo-restante {
+	width: 100%;
+	height: 100%;
+	background-color: rgb(84, 141, 212);
+}
+/* Opções do jogo */
+#opcoes-jogo {
+	overflow: hidden;
+}
+#opcoes-jogo div {
+	float: right;
+	margin-right: 20px;
+	margin-top: 10px;
+}
+#opcoes-jogo button {
+	width: 50px;
+	height: 50px;
+	border-radius: 100%;
+	margin-right: 5px;
+	font-size: 30px;
+	line-height: 100%;
+	padding-left: 10px;
+}
+/* Telas de ganhar e perder e inicial */
+#inicial, #tela-vencer, #tela-derrota {
+	background-color: rgba(0, 0, 0, 0.5); 
+	width: 100%; 
+	height: 100%; 
+	position: absolute; 
+	z-index: 9999;
+	color: white;
+}
+#inicial div, #tela-vencer div, #tela-derrota div {
+	position: absolute; 
+	top: 50%; 
+	right: 0; 
+	left: 0; 
+	margin: auto;
+}
+#inicial {
+	background-color: rgb(54, 95, 145);
+}
+#inicial div {
+	top: 10%;
+}
