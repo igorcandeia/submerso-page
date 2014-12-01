@@ -37,7 +37,7 @@
     <div id="inicial">
 		<div>
 			<center>
-				<img />
+				<img src="img/logotipo.jpg" />
 				<button id="iniciar-jogo">Play</button>
 				<button id="sobre">Sobre</button>
 			</center>
@@ -61,25 +61,22 @@
 			</center>
 		</div>
     </div>
+	<!-- Tela principal -->
     <ion-pane>
-	  <!--
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Submerso</h1>
-      </ion-header-bar>
-      -->
-      <ion-content style="background-color: rgb(54, 95, 145);">
+      <ion-content style="background-image: url('img/fundo.jpg') ;
+       background-repeat: repeat-x;
+		background-size:contain;background-position:center;background-color:#0084cc">
+		
       <div ng-controller="MainController" id="controller" >
 	  
-		<!-- Opções do jogo -->
-		<div id="opcoes-jogo">
-			<div>
-				<button class="button button-light mostrar-numero"><i class="fa fa-heart"></i></button>
-				<button class="button button-light mutar" data-mutado="false" on-click="play()"><i class="fa fa-bell"></i></button>
-				<button class="button button-light ajuda"><i class="fa fa-question"></i></button>
-			</div>
-		</div>
-
-		<div class="divisor"></div>
+	    <!-- Musica -->
+		<audio id="musica" loop>
+			<source src="audio/saga_musix_-_10000m_below_sea_level.ogg"  type="audio/ogg" />
+		</audio>
+		<!-- Efeito sonoro -->
+		<audio id="sonoro">
+			<source src="audio/button-click.wav"  type="audio/wav" />
+		</audio>
 		
 		<!-- Configurações do jogo -->
 		<input type="hidden" id="dimensao" value="3" />		 	 <!-- Número de blocos -->
@@ -87,8 +84,18 @@
 		<input type="hidden" id="embaralhos" value="18" /> 		 <!-- Número de embaralhos feitos inicialmente -->
 		<input type="hidden" id="tempo-total" value="300" />	 <!-- Tempo total do cronômetro em segundos -->
 		<input type="hidden" id="margem" value="5" /> 			 <!-- Margem entre os blocos em pixels -->
-		<input type="hidden" id="porcentagem" value="0.8" />	 <!-- Porcentagem da tela que os blocos ocuparão -->
+		<input type="hidden" id="porcentagem" value="0.7" />	 <!-- Porcentagem da tela que os blocos ocuparão -->
 		<input type="hidden" id="duracao-numeros" value="3.0" /> <!-- Duração de mostrar os números em segundos -->
+
+		<!-- Opções do jogo -->
+		<div id="opcoes-jogo">
+			<div>
+			<!--	<button class="button button-light mostrar-numero"><i class="fa fa-heart"></i></button> -->
+				<img class = "mostrar-numero" src = "img/ajuda.png" />
+				<img data-mutado="false" class="mutar" src="img/som.png" />
+				<img  class="repetir" src="img/repetir.png" />
+			</div>
+		</div>
 
 		<div class="divisor"></div>
 
@@ -97,11 +104,14 @@
 
 		<div class="divisor"></div>
 
+		<!-- Cronometro -->
 		<div id="cronometro">
 			<div id="tempo-restante"></div>
 		</div>
-      </div>
-      </ion-content>
+        </div>
+		<center><div style="width: 80%;"><h3 id="tempo-restante-texto">Tempo restante<h3></div></center>
+		
+      </ion-content> 
     </ion-pane>
   </body>
 </html>

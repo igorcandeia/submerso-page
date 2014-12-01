@@ -43,14 +43,7 @@ $(document).on("ready", function() {
 				cronometro.reinicia();
 			});
 			//musica do jogo 
-			try {
-				musica = new Media(getPhoneGapPath() + "audio/nyanlooped.mp3", null, null, function(status) {
-					if (status == Media.MEDIA_STOPPED) {
-						musica.play();
-					}
-				});
-				musica.play();
-			} catch(err) { } 
+			musica = tocarMusica();
 		}
 
 		//Movimentação 
@@ -131,28 +124,40 @@ $(document).on("ready", function() {
 			}, proximoTempo);
 		};
 		$(".mostrar-numero").on("click", function() {
-			$(this).attr("disabled", "disabled");
-			mostrarNumeros(0, false);
+			if ($(this).attr("src") == "img/ajuda.png") {
+				mostrarNumeros(0, false);
+			} 
+			$(this).attr("src", "img/ajuda-desabilitado.png");
+			
 		});
+		
+		//Repetir
+		$(".repetir").on("click",function(){
+			if (!cronometro.isPausado()) {
+				cronometro.pausa();
+				reiniciarJogo();
+			}
+		});
+		
 		
 		//Mutar 
 		$(".mutar").on("click", function() {
 			//desmuta 
 			if ($(this).data("mutado") == "true") {
-				$(this).find("i").removeClass("fa-bell-slash");
-				$(this).find("i").addClass("fa-bell");
+				$(this).attr("src", "img/som.png");
 				$(this).data("mutado", "false");
 				if (musica) {
 					musica.play();
 				}
+				$("#musica")[0].play();
 			//muta 
 			} else {
-				$(this).find("i").removeClass("fa-bell");
-				$(this).find("i").addClass("fa-bell-slash");
+				$(this).attr("src", "img/som-desabilitado.png");
 				$(this).data("mutado", "true");
 				if (musica) {
 					musica.pause();
 				}
+				$("#musica")[0].pause();
 			}	
 		});
 		

@@ -28,14 +28,7 @@ Jogo.prototype.move = function(num) {
 	//Som de movimento 
 	var isMutado = $(".mutar").data("mutado") == "true";
 	if (direcao != null && !isMutado) {
-		try {
-			if (window.som) {
-				window.som.stop();
-				window.som.release();
-			}
-			window.som = new Media(getPhoneGapPath() + "audio/button-click.wav");
-			window.som.play();
-		} catch(err) { } 
+		tocarEfeitoSonoro();
 	}
 	switch (direcao) {
 		case Direcao.ESQUERDA:

@@ -20,7 +20,7 @@ function desenharBlocos(desenho, tamanho, dimensao, margem) {
 			if (!ultimoElemento) {
 				var num = i * dimensao + j + 1;
 				var htmlImg = "<img src='img/" + desenho + "/parte" + num + ".gif' />";
-				var htmlNumero = "<p style='position: absolute; right: 0; left: 0; margin: auto; color: rgba(255, 255, 255, 0);'>" + num + "</p>";
+				var htmlNumero = "<p style='position: absolute; right: 0; left: 0; margin: auto; color: rgba(255, 255, 255, 0); font-family: Submerso;'>" + num + "</p>";
 				var htmlDiv = "<div id='c" + num + "'>" + htmlNumero + htmlImg + "</div>";
 				$("#container").append(htmlDiv);
 				var elemento = $("#c" + num);
