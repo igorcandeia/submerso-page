@@ -84,7 +84,7 @@
 		<input type="hidden" id="embaralhos" value="18" /> 		 <!-- Número de embaralhos feitos inicialmente -->
 		<input type="hidden" id="tempo-total" value="300" />	 <!-- Tempo total do cronômetro em segundos -->
 		<input type="hidden" id="margem" value="5" /> 			 <!-- Margem entre os blocos em pixels -->
-		<input type="hidden" id="porcentagem" value="0.6" />	 <!-- Porcentagem da tela que os blocos ocuparão -->
+		<input type="hidden" id="porcentagem" value="0.5" />	 <!-- Porcentagem da tela que os blocos ocuparão -->
 		<input type="hidden" id="duracao-numeros" value="3.0" /> <!-- Duração de mostrar os números em segundos -->
 
 		<!-- Opções do jogo -->

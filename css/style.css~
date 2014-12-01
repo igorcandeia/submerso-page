@@ -102,5 +102,6 @@
 	background-color: rgb(54, 95, 145);
 }
 #inicial div {
+	position: absolute;
 	top: 10%;
 }
