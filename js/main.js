@@ -19,7 +19,7 @@ $(document).on("ready", function() {
 		// VARIÁVEIS DO JOGO 
 		//------------------------------------------------
 		var tamanho = getTamanhoBloco(porcentagem, dimensao);
-		var blocos = desenharBlocos("nyan_cat", tamanho, dimensao, margem);
+		var blocos = desenharBlocos("submerso", tamanho, dimensao, margem);
 		var puzzle = new Puzzle(dimensao);
 		var jogo = new Jogo(puzzle, blocos, velocidade, numEmbaralhos);
 		var barra = $("#tempo-restante");
@@ -29,6 +29,7 @@ $(document).on("ready", function() {
 		// AÇÕES
 		//------------------------------------------------
 		//Tela inicial 
+		var musicaMenu = tocarMusicaMenu();
 		$("#tela-vencer").hide();
 		$("#tela-derrota").hide();
 		$("#iniciar-jogo").on("click", function() {
@@ -43,6 +44,10 @@ $(document).on("ready", function() {
 				cronometro.reinicia();
 			});
 			//musica do jogo 
+			try {
+				musicaMenu.pause();
+			} catch(err) { }
+			$("#musica-menu")[0].pause();
 			musica = tocarMusica();
 		}
 
@@ -67,6 +72,10 @@ $(document).on("ready", function() {
 		
 		//Vencer jogo 
 		function vencerJogo() {
+			$("#musica")[0].pause();
+			if ($(".mutar").data("mutado") != "true") {	
+				tocarEfeitoSonoroVitoria();
+			}
 			cronometro.pausa();
 			$("#tela-vencer h2").text("Você venceu em " + (puzzle.getQuantMovimentos() - numEmbaralhos) + " passos!");
 			$("#tela-vencer").show();
@@ -74,6 +83,10 @@ $(document).on("ready", function() {
 		
 		//Perder jogo 
 		function perderJogo() {
+			$("#musica")[0].pause();
+			if ($(".mutar").data("mutado") != "true") {
+				tocarEfeitoSonoroDerrota();
+			}
 			cronometro.pausa();
 			jogo.resolve(function() {
 				$("#tela-derrota").show();
@@ -86,6 +99,9 @@ $(document).on("ready", function() {
 			$("#tela-vencer").hide();
 			$(".mostrar-numero").removeAttr("disabled");
 			puzzle.reinicia();
+			if ($(".mutar").data("mutado") != "true") {
+				$("#musica")[0].play();
+			}			
 			jogo.embaralha(function() {
 				cronometro.reinicia();
 			});

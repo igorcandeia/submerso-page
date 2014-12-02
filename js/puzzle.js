@@ -22,9 +22,9 @@ function Puzzle(dimensao) {
 	for (var i = 0; i < dimensao; i++) {
 		this.tabuleiro.push([]);
 		for (var j = 0; j < dimensao; j++) {
-			var ultimoElemento = i == this.dimensao - 1 && j == this.dimensao - 1;
-			//ultimo elemento é o espaço vazio 
-			if (ultimoElemento) {
+			var espacoVazio = i == this.dimensao - 1 && j == this.dimensao - 1;
+			//espaço vazio é o elemento superior direito
+			if (espacoVazio) {
 				this.tabuleiro[i].push(ESPACO_VAZIO);
 			} else {
 				this.tabuleiro[i].push(dimensao * i + j + 1);
